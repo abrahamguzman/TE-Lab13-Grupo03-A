@@ -1,0 +1,184 @@
+[
+    {
+        "id": "3206ff62d9f7624b",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f20d5f46bec59260",
+        "type": "telegrambot-switch",
+        "z": "3206ff62d9f7624b",
+        "name": "",
+        "bot": "88a3fa5a6de64e89",
+        "chatId": "",
+        "question": "¿Qué hacer con el led?",
+        "answers": [
+            "Prender",
+            "Apagar",
+            "Salir"
+        ],
+        "outputs": 3,
+        "autoAnswerCallback": true,
+        "verticalAnswers": false,
+        "timeoutValue": "",
+        "timeoutUnits": "",
+        "x": 480,
+        "y": 540,
+        "wires": [
+            [
+                "cfed5f08a7d4fde8"
+            ],
+            [
+                "4d0656660d3e87f3"
+            ],
+            [
+                "e8208a33bc75b10b"
+            ]
+        ]
+    },
+    {
+        "id": "041d20b641ae138b",
+        "type": "telegrambot-command",
+        "z": "3206ff62d9f7624b",
+        "name": "",
+        "bot": "88a3fa5a6de64e89",
+        "command": "led",
+        "commandType": "str",
+        "commandCase": false,
+        "x": 230,
+        "y": 540,
+        "wires": [
+            [
+                "f20d5f46bec59260"
+            ]
+        ]
+    },
+    {
+        "id": "1f5cc668dd449b6e",
+        "type": "mqtt out",
+        "z": "3206ff62d9f7624b",
+        "name": "",
+        "topic": "grupo03int",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "0db1d76998bab441",
+        "x": 1010,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "cfed5f08a7d4fde8",
+        "type": "template",
+        "z": "3206ff62d9f7624b",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "0",
+        "output": "str",
+        "x": 700,
+        "y": 440,
+        "wires": [
+            [
+                "1f5cc668dd449b6e",
+                "f20d5f46bec59260"
+            ]
+        ]
+    },
+    {
+        "id": "4d0656660d3e87f3",
+        "type": "template",
+        "z": "3206ff62d9f7624b",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "1",
+        "output": "str",
+        "x": 700,
+        "y": 620,
+        "wires": [
+            [
+                "1f5cc668dd449b6e",
+                "f20d5f46bec59260"
+            ]
+        ]
+    },
+    {
+        "id": "e8208a33bc75b10b",
+        "type": "template",
+        "z": "3206ff62d9f7624b",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "¡Muchas gracias, vuelva pronto!",
+        "output": "str",
+        "x": 680,
+        "y": 740,
+        "wires": [
+            [
+                "d6f02c4ac1488824"
+            ]
+        ]
+    },
+    {
+        "id": "d6f02c4ac1488824",
+        "type": "telegrambot-notify",
+        "z": "3206ff62d9f7624b",
+        "name": "",
+        "bot": "88a3fa5a6de64e89",
+        "chatId": "",
+        "message": "",
+        "parseMode": "",
+        "x": 1020,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "88a3fa5a6de64e89",
+        "type": "telegrambot-config",
+        "botname": "Gosubot",
+        "usernames": "",
+        "chatIds": "",
+        "pollInterval": "300"
+    },
+    {
+        "id": "0db1d76998bab441",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
